@@ -1,6 +1,10 @@
 IMAGE_NAME ?= glynhanmer/go-linters
 GOLANG_BUILDER_TAG ?= 1.10.3-alpine3.7
-GOLINTERS_IMAGE ?= $(IMAGE_NAME):$(GOLANG_BUILDER_TAG)
+VERSION ?= $(shell git describe --tags --dirty --always)
+GOLINTERS_IMAGE ?= $(IMAGE_NAME):$(GOLANG_BUILDER_TAG)-$(VERSION)
+
+version:
+	echo $(VERSION)
 
 image:
 	docker build -t $(GOLINTERS_IMAGE) --build-arg GOLANG_BUILDER_TAG=$(GOLANG_BUILDER_TAG) .
