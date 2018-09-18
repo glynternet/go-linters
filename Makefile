@@ -12,6 +12,9 @@ image:
 tag-as-latest:
 	docker tag $(GOLINTERS_IMAGE) $(IMAGE_NAME):latest
 
+push-image:
+	docker push $(GOLINTERS_IMAGE)
+
 run:
 	$(if $(value PACKAGE),,$(error PACKAGE not set))
 	docker run --rm -v $(GOPATH)/src/$(PACKAGE):/go/src/$(PACKAGE) -e GO_GET=$(GO_GET) -w /go/src/$(PACKAGE) $(IMAGE_NAME)
