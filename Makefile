@@ -1,5 +1,5 @@
 IMAGE_NAME ?= glynhanmer/go-linters
-GOLANG_BUILDER_TAG ?= 1.10.3-alpine3.7
+GOLANG_BUILDER_TAG ?= 1.13.6-alpine3.11
 VERSION ?= $(shell git describe --tags --dirty --always)
 GOLINTERS_IMAGE ?= $(IMAGE_NAME):$(GOLANG_BUILDER_TAG)-$(VERSION)
 
