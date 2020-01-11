@@ -10,7 +10,7 @@ RUN go get -u gopkg.in/alecthomas/gometalinter.v2 \
 	&& rm -rf /go/pkg /go/*/*
 
 # Get app dependencies and run gometalinter
-CMD if [ "$GO_GET" = "1" ]; then go get -t ./... ; fi && \
+CMD if [ "$GO_GET" = "1" ]; then go get -v -t ./... ; fi && \
     CGO_ENABLED=0 gometalinter.v2 --vendor --tests \
     --concurrency=${CONCURRENCY:-4} \
     --deadline=5m \
